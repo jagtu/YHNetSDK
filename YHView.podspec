@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.author             = { "oid" => "42318168@qq.com" }
 
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "http://EXAMPLE/YHView.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/jagtu/YHView.git", :tag => "0.0.1" }
 
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
