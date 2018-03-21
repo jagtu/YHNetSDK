@@ -1,6 +1,0 @@
-framework module YHThemeKit {
-  umbrella header "YHThemeKit.h"
-
-  export *
-  module * { export * }
-}
