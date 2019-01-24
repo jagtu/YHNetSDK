@@ -1,0 +1,12 @@
+target "YHNetSDK"do
+
+platform :ios, '8.0' 
+
+#useframeworks
+
+#pod 'Reachability', '~> 3.2'
+
+pod 'AFNetworking','~> 3.2'
+
+end
+
