@@ -3,6 +3,7 @@
 //  YHNetSDK
 //
 //  Created by zxl on 2018/2/1.
+//  Modify by ljt on 2020/5/6:升级AFN至4.0.1版本
 //  Copyright © 2018年 YH. All rights reserved.
 //
 
@@ -39,6 +40,18 @@ typedef void(^YHUploadProgress)(float uploadProgress);
  @param failed failed
  */
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed;
+
+
+/**
+ postRequest
+
+ @param url url
+ @param parameters 参数
+ @param headerFields 请求头参数
+ @param successed successed
+ @param failed failed
+ */
++(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed;
 
 
 /**

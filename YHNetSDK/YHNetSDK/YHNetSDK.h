@@ -5,6 +5,7 @@
 //  Created by zxl on 2018/1/30.
 //  V1.0.6  by jagtu  upload file
 //  V1.0.7  by zxl  支持取消操作
+//  V1.0.8  by jagtu 升级AFN至4.0.1版本
 //  Copyright © 2018年 YH. All rights reserved.
 //
 

@@ -20,37 +20,44 @@ static AFHTTPSessionManager *sharedInstance = nil;
 +(void)getRequestWithUrl:(NSString *)url withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (successed) {
-            successed(responseObject);
-        }
+        
+        successed ? successed(responseObject) : NULL;
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failed) {
-            failed(nil);
-        }
+        
+        failed ? failed(nil) : NULL;
+        
     }];
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed];
+    return manager.tasks;
+}
+
++(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
+{
+    AFHTTPSessionManager *manager = [self getNetManager];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:headerFields withSuccessed:successed withFailed:failed];
     return manager.tasks;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed withCer:(BOOL)withCer
 {
     AFHTTPSessionManager *manager = [self getNetManagerWithCer:YES withCerFilePath:nil withUrlString:url];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed];
     return manager.tasks;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed  withCer:(BOOL)withCer withCerFilePath:(NSString *)cerFilePath
 {
     AFHTTPSessionManager *manager = [self getNetManagerWithCer:withCer withCerFilePath:cerFilePath withUrlString:url];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed];
     return manager.tasks;
 }
 
@@ -77,25 +84,23 @@ static AFHTTPSessionManager *sharedInstance = nil;
     manager.requestSerializer.timeoutInterval = YHNetTimeoutInterval;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed];
     return manager.tasks;
 }
 
 
-+(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
++(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
-    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:url parameters:parameters headers:headerFields progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        if (successed) {
-            successed(responseObject);
-        }
+        successed ? successed(responseObject) :NULL;
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        if (failed) {
-            failed(error);
-        }
+        failed ? failed(error) : NULL;
+        
     }];
     
     return manager.tasks;
@@ -105,7 +110,7 @@ static AFHTTPSessionManager *sharedInstance = nil;
 {
     AFHTTPSessionManager *manager = [self getNetManager];
     
-    [manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:url parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (id file in files) {
             NSAssert(([file isKindOfClass:[YHUploadFileModel class]] || [file isKindOfClass:[NSURL class]]), @"file type error. NSURL or YHUploadFileModel");
