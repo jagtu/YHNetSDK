@@ -41,6 +41,7 @@
         
     } withSuccessed:^(id obj) {
         
+        [self setLoadStatus];
         [self removeLoadingView];
         [self setDPStatusWhenSuccessed];
         [self parseJsonData:[self decryptData:obj]];
