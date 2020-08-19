@@ -5,7 +5,9 @@
 //  Created by zxl on 2018/1/30.
 //  V1.0.6  by jagtu  upload file
 //  V1.0.7  by zxl  支持取消操作
+//  V1.0.9  by jagtu on 2020/8/19 兼容不同版本的AFN
 //  Copyright © 2018年 YH. All rights reserved.
+//  https://github.com/XmYlzYhkj/YHNetSDK.git
 //
 
 #import <UIKit/UIKit.h>

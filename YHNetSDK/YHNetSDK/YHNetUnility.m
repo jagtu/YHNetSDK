@@ -17,10 +17,13 @@ static AFHTTPSessionManager *sharedInstance = nil;
 
 @implementation YHNetUnility
 
-+(void)getRequestWithUrl:(NSString *)url withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
++(NSURLSessionDataTask *)getRequestWithUrl:(NSString *)url withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-    [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSURLSessionDataTask * task;
+#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+    
+    task = [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (successed) {
@@ -31,26 +34,43 @@ static AFHTTPSessionManager *sharedInstance = nil;
             failed(nil);
         }
     }];
+     
+#else
+    
+    task = [manager GET:url parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (successed) {
+            successed(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failed) {
+            failed(nil);
+        }
+    }];
+    
+#endif
+    return task;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed progress:nil];
     return manager.tasks;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed withCer:(BOOL)withCer
 {
     AFHTTPSessionManager *manager = [self getNetManagerWithCer:YES withCerFilePath:nil withUrlString:url];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed progress:nil];
     return manager.tasks;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed  withCer:(BOOL)withCer withCerFilePath:(NSString *)cerFilePath
 {
     AFHTTPSessionManager *manager = [self getNetManagerWithCer:withCer withCerFilePath:cerFilePath withUrlString:url];
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed progress:nil];
     return manager.tasks;
 }
 
@@ -77,14 +97,24 @@ static AFHTTPSessionManager *sharedInstance = nil;
     manager.requestSerializer.timeoutInterval = YHNetTimeoutInterval;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
-    [self postWithManager:manager withUrl:url withParameters:parameters withSuccessed:successed withFailed:failed];
+    [self postWithManager:manager withUrl:url withParameters:parameters withHeaderFields:nil withSuccessed:successed withFailed:failed progress:nil];
     return manager.tasks;
 }
 
 
-+(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
++(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields  withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed progress:(nullable void (^)(NSProgress *uploadProgress))progressHander
 {
+#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+    
+    for (NSString *key in headerFields) {
+        [manager.requestSerializer setValue:headerFields[key] forHTTPHeaderField:key];
+    }
+
     [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        if (progressHander) {
+            progressHander(uploadProgress);
+        }
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -98,6 +128,28 @@ static AFHTTPSessionManager *sharedInstance = nil;
         }
     }];
     
+    
+#else
+    
+    [manager POST:url parameters:parameters headers:headerFields progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        if (progressHander) {
+            progressHander(uploadProgress);
+        }
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (successed) {
+            successed(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+#endif
     return manager.tasks;
 }
 
@@ -105,6 +157,8 @@ static AFHTTPSessionManager *sharedInstance = nil;
 {
     AFHTTPSessionManager *manager = [self getNetManager];
     
+#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+        
     [manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (id file in files) {
@@ -158,7 +212,65 @@ static AFHTTPSessionManager *sharedInstance = nil;
             failed(error);
         }
     }];
+
+        
+#else
     
+    [manager POST:url parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        for (id file in files) {
+            NSAssert(([file isKindOfClass:[YHUploadFileModel class]] || [file isKindOfClass:[NSURL class]]), @"file type error. NSURL or YHUploadFileModel");
+            if ([file isKindOfClass:[YHUploadFileModel class]]) {
+                
+                YHUploadFileModel *fmodel = (YHUploadFileModel *)file;
+                if (fmodel.fileData) {
+                    [formData appendPartWithFileData:fmodel.fileData name:fmodel.name fileName:fmodel.fileName mimeType:fmodel.mimeType];
+                }else if(fmodel.fileURL){
+                    NSError * error = nil;
+                    BOOL append = NO;
+                    if (fmodel.mimeType) {
+                        append = [formData appendPartWithFileURL:fmodel.fileURL name:fmodel.name fileName:fmodel.fileName mimeType:fmodel.mimeType error:&error];
+                    }else{
+                        append = [formData appendPartWithFileURL:fmodel.fileURL name:fmodel.name error:&error];
+                    }
+                    if (!append) {
+                        if (failed) {
+                            failed(error);
+                        }
+                    }
+                }
+                
+            }else if([file isKindOfClass:[NSURL class]]){
+                
+                NSError * error = nil;
+                BOOL append = [formData appendPartWithFileURL:file name:@"files" error:&error];
+                if (!append) {
+                    if (failed) {
+                        failed(error);
+                    }
+                }
+            }
+        }
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        if (progressB) {
+            float progress = uploadProgress.completedUnitCount/uploadProgress.totalUnitCount;
+            progressB(progress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (successed) {
+            successed(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+#endif
     return manager.uploadTasks;
 }
 
