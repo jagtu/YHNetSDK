@@ -16,7 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
 
 DEPENDENCIES:
-  - AFNetworking (~> 4.0)
+  - AFNetworking (~> 4.0.1)
 
 SPEC REPOS:
   trunk:
@@ -25,6 +25,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
 
-PODFILE CHECKSUM: 57b1f4d797bc0fe5ad79adfe54ef9bebbe9dd72f
+PODFILE CHECKSUM: 3cf1e0e2e38120cb11d93560d8b215590ea1ddd1
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.0

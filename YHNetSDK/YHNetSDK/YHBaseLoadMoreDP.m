@@ -47,7 +47,10 @@
         }
     }else
     {
-        self.isRefresh = YES;
+        @synchronized (self) {
+            self.isRefresh = YES;
+        }
+        
         [self setFirstPageNo];
         [self start];
     }
@@ -67,7 +70,10 @@
         return;
     }else
     {
-        self.isRefresh = NO;
+        @synchronized (self) {
+            self.isRefresh = NO;
+        }
+        
         [self setNextPageNo];
         [self start];
     }

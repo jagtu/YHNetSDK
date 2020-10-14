@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <YHNetSDK/YHNetSDK.h>
 #import "YHTestDP.h"
-
+#import <AFNetworking/AFNetworking.h>
 @interface ViewController ()
 @property(nonatomic,strong)UILabel *respLabel;
 
@@ -72,17 +72,23 @@
     YHNetTimeoutInterval = 90.0;
     NSString *url = @"https://apps2.1zhe.com/ios/index_bak.php?m=other&op=collection&ac=init&app_version=2.4.9&v=2.4.7";
     self.respLabel.text = @"请求中..";
-    [YHNetUnility postRequestWithUrl:url withParameters:nil withSuccessed:^(id obj) {
+//    [YHNetUnility postRequestWithUrl:url withParameters:nil withSuccessed:^(id obj) {
+//
+//        NSLog(@"withSuccessed:%@",obj);
+//        self.respLabel.text = [NSString stringWithFormat:@"响应:\n%@",obj];
+//
+//    } withFailed:^(NSError *error) {
+//
+//        self.respLabel.text = [NSString stringWithFormat:@"error:\n%@",error.localizedDescription];
+//        NSLog(@"error:%@",error);
+//    }];
+    [YHNetUnility postRequestWithUrl:url withRequestHeaders:nil withParameters:nil withRequestSerializerType:YHRequestSerializerJson withResponeSerializerType:YHResponeSerializerJson withProgress:^(NSProgress *downloadProgress) {
         
-        NSLog(@"withSuccessed:%@",obj);
-        self.respLabel.text = [NSString stringWithFormat:@"响应:\n%@",obj];
+    } withSuccessed:^(id obj) {
         
     } withFailed:^(NSError *error) {
         
-        self.respLabel.text = [NSString stringWithFormat:@"error:\n%@",error.localizedDescription];
-        NSLog(@"error:%@",error);
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +102,7 @@
 {
     if (!_dp) {
         _dp = [[YHTestDP alloc] init];
+        _dp.netHandle = self;
     }
     return _dp;
 }
@@ -118,5 +125,21 @@
 {
     NSLog(@"cancelAll");
 //    [self.dp cancellAllDP];
+}
+
+-(void)testAfn4{
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    
+    if ([manager respondsToSelector:@selector(POST:parameters:headers:progress:success:failure:)]) {
+        [manager POST:nil parameters:nil headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+    }else{
+        
+    };
 }
 @end

@@ -24,41 +24,23 @@
         return;
     }
     
-    [self actionBeforeStart];
+    [self actionBeforeSendRequest];
     
-    [self setLoadingView];
-    
-    [self setParam];
-    
-    [self setDPStatusBeforeRequest];
-    
-    self.tasks = [YHNetUnility postRequestWithUrl:[self getFullUrl] withParameters:[self getParam] withFiles:[self getFiles] uploadProgress:^(float uploadProgress) {
-        
-        self.progress = uploadProgress;
+    YHNetWeakifySelf;
+    self.tasks = [YHNetUnility postUploadRequestWithUrl:[self getFullUrl] withRequestHeaders:[self getHeaders] withParameters:[self getParam] withRequestSerializerType:self.requestSerializerType withResponeSerializerType:self.responeSerializerType withFiles:[self getFiles] uploadProgress:^(NSProgress *uploadProgress) {
+        YHNetStrongifySelf;
+        self.progress = uploadProgress.fractionCompleted;
         if (self.netHandle && [self.netHandle respondsToSelector:@selector(netByDP:uploadProgress:)]) {
             [self.netHandle netByDP:self uploadProgress:self.progress];
         }
-        
     } withSuccessed:^(id obj) {
+        YHNetStrongifySelf;
+        [self continueActionAfterRequestSuccessWithObj:obj];
         
-        [self removeLoadingView];
-        [self setDPStatusWhenSuccessed];
-        [self parseJsonData:[self decryptData:obj]];
-        [self actionAfterParseData];
-        if (self.netHandle && [self.netHandle respondsToSelector:@selector(netByDP:doWhenSuccess:)]) {
-            [self.netHandle netByDP:self doWhenSuccess:obj];
-        }
     } withFailed:^(NSError *error) {
-        
-        [self removeLoadingView];
-        [self setDPStatusWhenFailed];
-        [self actionAfterFailed:error];
-        
-        if (self.netHandle && [self.netHandle respondsToSelector:@selector(netByDP:doWhenFailed:)]) {
-            [self.netHandle netByDP:self doWhenFailed:error];
-        }
+        YHNetStrongifySelf;
+        [self continueActionAfterRequestFailedWithError:error];
     }];
-
 }
 
 @end
