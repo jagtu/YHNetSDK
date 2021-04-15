@@ -1,30 +1,37 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - YHNetSDK (0.1.0.9):
+    - AFNetworking
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.2)
+  - YHNetSDK (from `../`)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
 
-SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+EXTERNAL SOURCES:
+  YHNetSDK:
+    :path: "../"
 
-PODFILE CHECKSUM: 4226bdb705203d15b4ddaab044f5869bfec15fdd
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  YHNetSDK: 74849520a9be71e882d4a07b975d80b4ceef7aba
+
+PODFILE CHECKSUM: 17857d79d02b4feb4b4e28b2d5a710be7646730e
 
 COCOAPODS: 1.9.1

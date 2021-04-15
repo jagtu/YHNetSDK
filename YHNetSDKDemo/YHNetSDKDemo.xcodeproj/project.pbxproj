@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D705040821E2FBBD00AD8390 /* YHNetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D705040721E2FBBD00AD8390 /* YHNetSDK.framework */; };
 		D705040A21E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D705040921E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a */; };
 		D71B4BBE21A2B850009D5A70 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B4BBD21A2B850009D5A70 /* Security.framework */; };
 		D71B4BC021A2B857009D5A70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B4BBF21A2B857009D5A70 /* CoreGraphics.framework */; };
@@ -65,7 +64,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D705040A21E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a in Frameworks */,
-				D705040821E2FBBD00AD8390 /* YHNetSDK.framework in Frameworks */,
 				D71B4BC021A2B857009D5A70 /* CoreGraphics.framework in Frameworks */,
 				D71B4BBE21A2B850009D5A70 /* Security.framework in Frameworks */,
 				D919BDA621800B160087D225 /* Foundation.framework in Frameworks */,
