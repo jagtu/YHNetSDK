@@ -5,6 +5,8 @@ target 'YHNetSDKDemo' do
 
 platform :ios, '9.0'
 
-pod 'AFNetworking'
+pod 'AFNetworking','~> 3.2'
+
+#pod 'AFNetworking','~> 4.0'
 
 end

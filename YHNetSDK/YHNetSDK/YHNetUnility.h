@@ -28,7 +28,7 @@ typedef void(^YHUploadProgress)(float uploadProgress);
  @param successed success
  @param failed failed
  */
-+(void)getRequestWithUrl:(NSString *)url withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed;
++(NSURLSessionDataTask *)getRequestWithUrl:(NSString *)url withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed;
 
 
 /**
