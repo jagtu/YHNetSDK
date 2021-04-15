@@ -123,6 +123,8 @@
  */
 -(void)removeLoadingView;
 
+-(void)setLoadStatus;
+
 #pragma mark 加载数据时候动作
 
 /**

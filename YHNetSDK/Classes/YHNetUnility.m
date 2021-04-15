@@ -37,6 +37,8 @@ static AFHTTPSessionManager *sharedInstance = nil;
     }];
      
 #else
+    
+    task = [manager GET:url parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
