@@ -1,5 +1,8 @@
-// AFCompatibilityMacros.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+//
+//  UIImage+AFNetworking.h
+//  
+//
+//  Created by Paulo Ferreira on 08/07/15.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,19 +22,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef AFCompatibilityMacros_h
-#define AFCompatibilityMacros_h
+#if TARGET_OS_IOS || TARGET_OS_TV
 
-#ifdef API_UNAVAILABLE
-    #define AF_API_UNAVAILABLE(x) API_UNAVAILABLE(x)
-#else
-    #define AF_API_UNAVAILABLE(x)
-#endif // API_UNAVAILABLE
+#import <UIKit/UIKit.h>
 
-#if __has_warning("-Wunguarded-availability-new")
-    #define AF_CAN_USE_AT_AVAILABLE 1
-#else
-    #define AF_CAN_USE_AT_AVAILABLE 0
+@interface UIImage (AFNetworking)
+
++ (UIImage*) safeImageWithData:(NSData*)data;
+
+@end
+
 #endif
-
-#endif /* AFCompatibilityMacros_h */
