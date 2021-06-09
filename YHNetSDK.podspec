@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
   #s.dependency     "Reachability"
 
-  s.dependency     "AFNetworking"
+  s.dependency     "AFNetworking",'~> 4.0'
 
   #s.vendored_frameworks = ["Framework/*.framework"]
   
