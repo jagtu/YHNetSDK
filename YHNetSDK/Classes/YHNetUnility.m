@@ -22,7 +22,7 @@ static AFHTTPSessionManager *sharedInstance = nil;
     AFHTTPSessionManager *manager = [self getNetManager];
 
     NSURLSessionDataTask * task;
-#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+#if 0
     
     task = [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -113,7 +113,7 @@ static AFHTTPSessionManager *sharedInstance = nil;
 
 +(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed progress:(nullable void (^)(NSProgress *uploadProgress))progressHander
 {
-#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+#if 0
     
     for (NSString *key in headerFields) {
         [manager.requestSerializer setValue:headerFields[key] forHTTPHeaderField:key];
@@ -164,7 +164,7 @@ static AFHTTPSessionManager *sharedInstance = nil;
 {
     AFHTTPSessionManager *manager = [self getNetManager];
     
-#if __has_include(<AFNetworking/UIWebView+AFNetworking.h>)
+#if 0
         
     [manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
