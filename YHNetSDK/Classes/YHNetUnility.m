@@ -22,22 +22,6 @@ static AFHTTPSessionManager *sharedInstance = nil;
     AFHTTPSessionManager *manager = [self getNetManager];
 
     NSURLSessionDataTask * task;
-#if 0
-    
-    task = [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (successed) {
-            successed(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failed) {
-            failed(nil);
-        }
-    }];
-     
-#else
-    
     task = [manager GET:url parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -49,8 +33,6 @@ static AFHTTPSessionManager *sharedInstance = nil;
         failed ? failed(nil) : NULL;
         
     }];
-    
-#endif
     return task;
 }
 
@@ -113,32 +95,6 @@ static AFHTTPSessionManager *sharedInstance = nil;
 
 +(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed progress:(nullable void (^)(NSProgress *uploadProgress))progressHander
 {
-#if 0
-    
-    for (NSString *key in headerFields) {
-        [manager.requestSerializer setValue:headerFields[key] forHTTPHeaderField:key];
-    }
-
-    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        if (progressHander) {
-            progressHander(uploadProgress);
-        }
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        if (successed) {
-            successed(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        if (failed) {
-            failed(error);
-        }
-    }];
-    
-    
-#else
     
     [manager POST:url parameters:parameters headers:headerFields progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -155,74 +111,13 @@ static AFHTTPSessionManager *sharedInstance = nil;
         failed ? failed(error) : NULL;
         
     }];
-    
-#endif
     return manager.tasks;
 }
 
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withFiles:(NSArray *)files uploadProgress:(YHUploadProgress)progressB withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-    
-#if 0
         
-    [manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        for (id file in files) {
-            NSAssert(([file isKindOfClass:[YHUploadFileModel class]] || [file isKindOfClass:[NSURL class]]), @"file type error. NSURL or YHUploadFileModel");
-            if ([file isKindOfClass:[YHUploadFileModel class]]) {
-                
-                YHUploadFileModel *fmodel = (YHUploadFileModel *)file;
-                if (fmodel.fileData) {
-                    [formData appendPartWithFileData:fmodel.fileData name:fmodel.name fileName:fmodel.fileName mimeType:fmodel.mimeType];
-                }else if(fmodel.fileURL){
-                    NSError * error = nil;
-                    BOOL append = NO;
-                    if (fmodel.mimeType) {
-                        append = [formData appendPartWithFileURL:fmodel.fileURL name:fmodel.name fileName:fmodel.fileName mimeType:fmodel.mimeType error:&error];
-                    }else{
-                        append = [formData appendPartWithFileURL:fmodel.fileURL name:fmodel.name error:&error];
-                    }
-                    if (!append) {
-                        if (failed) {
-                            failed(error);
-                        }
-                    }
-                }
-                
-            }else if([file isKindOfClass:[NSURL class]]){
-                
-                NSError * error = nil;
-                BOOL append = [formData appendPartWithFileURL:file name:@"files" error:&error];
-                if (!append) {
-                    if (failed) {
-                        failed(error);
-                    }
-                }
-            }
-        }
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        if (progressB) {
-            float progress = uploadProgress.completedUnitCount/uploadProgress.totalUnitCount;
-            progressB(progress);
-        }
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        if (successed) {
-            successed(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        if (failed) {
-            failed(error);
-        }
-    }];
-
-        
-#else
-    
     [manager POST:url parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (id file in files) {
@@ -277,7 +172,6 @@ static AFHTTPSessionManager *sharedInstance = nil;
         }
     }];
     
-#endif
     return manager.uploadTasks;
 }
 
