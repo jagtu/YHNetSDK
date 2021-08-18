@@ -1,6 +1,6 @@
 {
   "name": "YHNetSDK",
-  "version": "0.1.0.11",
+  "version": "0.1.1.0",
   "summary": "YHNetSDK is only a net sdk",
   "description": "YHNetSDK is only a base net sdk, we need pod thirdparty: AFNetworking",
   "homepage": "https://github.com/XmYlzYhkj/YHNetSDK",
@@ -20,13 +20,13 @@
   },
   "source": {
     "git": "git@gitlab.ylzpay.com:ios/ios_component/YHNetSDK.git",
-    "tag": "0.1.0.11"
+    "tag": "0.1.1.0"
   },
   "source_files": "YHNetSDK/Classes/*",
   "requires_arc": true,
   "dependencies": {
     "AFNetworking": [
-
+      "~> 4.0"
     ]
   }
 }

@@ -21,6 +21,8 @@ static AFHTTPSessionManager *sharedInstance = nil;
 {
     AFHTTPSessionManager *manager = [self getNetManager];
 
+    NSAssert([manager respondsToSelector:@selector(GET:parameters:headers:progress:success:failure:)], @"请升级AFNetworking至4.0以上版本，或者使用低版本YHNetSDK(1.0)");
+    
     NSURLSessionDataTask * task;
     task = [manager GET:url parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -96,6 +98,8 @@ static AFHTTPSessionManager *sharedInstance = nil;
 +(NSArray *)postWithManager:(AFHTTPSessionManager *)manager withUrl:(NSString *)url withParameters:(NSDictionary *)parameters withHeaderFields:(NSDictionary *)headerFields withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed progress:(nullable void (^)(NSProgress *uploadProgress))progressHander
 {
     
+    NSAssert([manager respondsToSelector:@selector(POST:parameters:headers:progress:success:failure:)], @"请升级AFNetworking至4.0以上版本，或者使用低版本YHNetSDK(1.0)");
+    
     [manager POST:url parameters:parameters headers:headerFields progress:^(NSProgress * _Nonnull uploadProgress) {
         
         if (progressHander) {
@@ -117,7 +121,9 @@ static AFHTTPSessionManager *sharedInstance = nil;
 +(NSArray *)postRequestWithUrl:(NSString *)url withParameters:(NSDictionary *)parameters withFiles:(NSArray *)files uploadProgress:(YHUploadProgress)progressB withSuccessed:(YHSuccessed)successed withFailed:(YHFailed)failed
 {
     AFHTTPSessionManager *manager = [self getNetManager];
-        
+    
+    NSAssert([manager respondsToSelector:@selector(POST:parameters:headers:progress:success:failure:)], @"请升级AFNetworking至4.0以上版本，或者使用低版本YHNetSDK(1.0)");
+    
     [manager POST:url parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (id file in files) {

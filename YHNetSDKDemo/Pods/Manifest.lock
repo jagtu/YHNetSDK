@@ -14,8 +14,8 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - YHNetSDK (0.1.0.11):
-    - AFNetworking
+  - YHNetSDK (0.1.1.0):
+    - AFNetworking (~> 4.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
@@ -31,8 +31,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  YHNetSDK: 0e3b2448a41acecd641dd8f3b4ebc86f2cbf978b
+  YHNetSDK: 62e4ed6d66750daaa2436764716fb34ed13b8a09
 
 PODFILE CHECKSUM: ad29ef9e45ab3872217986adb7d59b7d82622110
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
