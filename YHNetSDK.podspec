@@ -9,15 +9,15 @@ Pod::Spec.new do |s|
 
   s.description  = "YHNetSDK is only a base net sdk, we need pod thirdparty: AFNetworking"
 
-  s.homepage     = "https://github.com/XmYlzYhkj/YHNetSDK"
+  s.homepage     = "https://github.com/XmYlzYhkj/YHNetSDK.git"
 
-  s.license      = "MIT "
+  s.license      = "MIT"
 
   s.author       = { "jagtu" => "42318168@qq.com" }
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
