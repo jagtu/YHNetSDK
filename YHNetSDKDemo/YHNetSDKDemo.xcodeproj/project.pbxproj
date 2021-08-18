@@ -18,7 +18,6 @@
 		D7397F3320203B780036346C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7397F3120203B780036346C /* LaunchScreen.storyboard */; };
 		D7397F3620203B780036346C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7397F3520203B780036346C /* main.m */; };
 		D7397F4020203B780036346C /* YHNetSDKDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7397F3F20203B780036346C /* YHNetSDKDemoUITests.m */; };
-		D7823F322536E46000DA294C /* YHNetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7823F312536E46000DA294C /* YHNetSDK.framework */; };
 		D919BDA421800B0E0087D225 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D919BDA321800B0E0087D225 /* SystemConfiguration.framework */; };
 		D919BDA621800B160087D225 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D919BDA521800B160087D225 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +52,6 @@
 		D7397F3B20203B780036346C /* YHNetSDKDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YHNetSDKDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7397F3F20203B780036346C /* YHNetSDKDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YHNetSDKDemoUITests.m; sourceTree = "<group>"; };
 		D7397F4120203B780036346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7823F312536E46000DA294C /* YHNetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YHNetSDK.framework; path = ../YHNetSDK/Products/YHNetSDK.framework; sourceTree = "<group>"; };
 		D919BDA321800B0E0087D225 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D919BDA521800B160087D225 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F7AAD1CD40CC4A9F6A1D9BE8 /* Pods-YHNetSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHNetSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHNetSDKDemo/Pods-YHNetSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7823F322536E46000DA294C /* YHNetSDK.framework in Frameworks */,
 				D705040A21E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a in Frameworks */,
 				D71B4BC021A2B857009D5A70 /* CoreGraphics.framework in Frameworks */,
 				D71B4BBE21A2B850009D5A70 /* Security.framework in Frameworks */,
@@ -133,7 +130,6 @@
 		D786F93220219F24002B2A78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D7823F312536E46000DA294C /* YHNetSDK.framework */,
 				D705040921E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a */,
 				D71B4BBF21A2B857009D5A70 /* CoreGraphics.framework */,
 				D71B4BBD21A2B850009D5A70 /* Security.framework */,
