@@ -13,7 +13,8 @@
 
 -(void)setParam
 {
-    self.isWithCer = YES;
+//    self.isWithCer = YES;
+    
 }
 
 -(NSString *)getFullUrl;
@@ -27,7 +28,11 @@
 
 -(void)parseJsonData:(NSMutableDictionary *)responeObj
 {
-    
+    NSLog(@"parseJsonData:{");
+    for (NSString *key in responeObj.allKeys) {
+        NSLog(@"%@:%@,",key,responeObj[key]);
+    }
+    NSLog(@"}");
 }
 
 -(void)actionAfterFailed:(NSError *)error

@@ -10,7 +10,7 @@
 #import <YHNetSDK/YHNetSDK.h>
 #import "YHTestDP.h"
 #import <AFNetworking/AFNetworking.h>
-@interface ViewController ()
+@interface ViewController ()<YHNetProtocol>
 @property(nonatomic,strong)UILabel *respLabel;
 
 @property(nonatomic,strong)YHTestDP *dp;
@@ -89,6 +89,8 @@
     } withFailed:^(NSError *error) {
         
     }];
+    
+    [self.dp start];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,4 +144,6 @@
         
     };
 }
+
+
 @end
