@@ -10,7 +10,6 @@
 		D705040A21E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D705040921E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a */; };
 		D71B4BBE21A2B850009D5A70 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B4BBD21A2B850009D5A70 /* Security.framework */; };
 		D71B4BC021A2B857009D5A70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71B4BBF21A2B857009D5A70 /* CoreGraphics.framework */; };
-		D71B4BC321A2B8B9009D5A70 /* YHTestDP.m in Sources */ = {isa = PBXBuildFile; fileRef = D71B4BC221A2B8B9009D5A70 /* YHTestDP.m */; };
 		D7397F2820203B780036346C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7397F2720203B780036346C /* AppDelegate.m */; };
 		D7397F2B20203B780036346C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7397F2A20203B780036346C /* ViewController.m */; };
 		D7397F2E20203B780036346C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7397F2C20203B780036346C /* Main.storyboard */; };
@@ -20,6 +19,12 @@
 		D7397F4020203B780036346C /* YHNetSDKDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7397F3F20203B780036346C /* YHNetSDKDemoUITests.m */; };
 		D919BDA421800B0E0087D225 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D919BDA321800B0E0087D225 /* SystemConfiguration.framework */; };
 		D919BDA621800B160087D225 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D919BDA521800B160087D225 /* Foundation.framework */; };
+		D96FE57227463DE200E164D7 /* YHTestDP.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56427463DE200E164D7 /* YHTestDP.m */; };
+		D96FE57327463DE200E164D7 /* YHihpDP.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56527463DE200E164D7 /* YHihpDP.m */; };
+		D96FE57427463DE200E164D7 /* YHCommonDP.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56A27463DE200E164D7 /* YHCommonDP.m */; };
+		D96FE57527463DE200E164D7 /* YHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56C27463DE200E164D7 /* YHBaseModel.m */; };
+		D96FE57627463DE200E164D7 /* YHBaseReqModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56E27463DE200E164D7 /* YHBaseReqModel.m */; };
+		D96FE57727463DE200E164D7 /* YHBaseRespModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE57127463DE200E164D7 /* YHBaseRespModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +42,6 @@
 		D705040921E2FC4D00AD8390 /* libPods-YHNetSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-YHNetSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71B4BBD21A2B850009D5A70 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D71B4BBF21A2B857009D5A70 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D71B4BC121A2B8B9009D5A70 /* YHTestDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTestDP.h; sourceTree = "<group>"; };
-		D71B4BC221A2B8B9009D5A70 /* YHTestDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTestDP.m; sourceTree = "<group>"; };
 		D7397F2320203B780036346C /* YHNetSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHNetSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7397F2620203B780036346C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7397F2720203B780036346C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +57,18 @@
 		D7397F4120203B780036346C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D919BDA321800B0E0087D225 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D919BDA521800B160087D225 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D96FE56427463DE200E164D7 /* YHTestDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTestDP.m; sourceTree = "<group>"; };
+		D96FE56527463DE200E164D7 /* YHihpDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHihpDP.m; sourceTree = "<group>"; };
+		D96FE56627463DE200E164D7 /* YHTestDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTestDP.h; sourceTree = "<group>"; };
+		D96FE56727463DE200E164D7 /* YHihpDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHihpDP.h; sourceTree = "<group>"; };
+		D96FE56927463DE200E164D7 /* YHCommonDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCommonDP.h; sourceTree = "<group>"; };
+		D96FE56A27463DE200E164D7 /* YHCommonDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCommonDP.m; sourceTree = "<group>"; };
+		D96FE56C27463DE200E164D7 /* YHBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHBaseModel.m; sourceTree = "<group>"; };
+		D96FE56D27463DE200E164D7 /* YHBaseRespModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHBaseRespModel.h; sourceTree = "<group>"; };
+		D96FE56E27463DE200E164D7 /* YHBaseReqModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHBaseReqModel.m; sourceTree = "<group>"; };
+		D96FE56F27463DE200E164D7 /* YHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHBaseModel.h; sourceTree = "<group>"; };
+		D96FE57027463DE200E164D7 /* YHBaseReqModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHBaseReqModel.h; sourceTree = "<group>"; };
+		D96FE57127463DE200E164D7 /* YHBaseRespModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHBaseRespModel.m; sourceTree = "<group>"; };
 		F7AAD1CD40CC4A9F6A1D9BE8 /* Pods-YHNetSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHNetSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHNetSDKDemo/Pods-YHNetSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,8 +118,7 @@
 		D7397F2520203B780036346C /* YHNetSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D71B4BC121A2B8B9009D5A70 /* YHTestDP.h */,
-				D71B4BC221A2B8B9009D5A70 /* YHTestDP.m */,
+				D96FE56227463DE200E164D7 /* dp */,
 				D7397F2620203B780036346C /* AppDelegate.h */,
 				D7397F2720203B780036346C /* AppDelegate.m */,
 				D7397F2920203B780036346C /* ViewController.h */,
@@ -139,6 +153,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D96FE56227463DE200E164D7 /* dp */ = {
+			isa = PBXGroup;
+			children = (
+				D96FE56327463DE200E164D7 /* test */,
+				D96FE56827463DE200E164D7 /* dataProvider */,
+				D96FE56B27463DE200E164D7 /* model */,
+			);
+			path = dp;
+			sourceTree = "<group>";
+		};
+		D96FE56327463DE200E164D7 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				D96FE56727463DE200E164D7 /* YHihpDP.h */,
+				D96FE56527463DE200E164D7 /* YHihpDP.m */,
+				D96FE56627463DE200E164D7 /* YHTestDP.h */,
+				D96FE56427463DE200E164D7 /* YHTestDP.m */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		D96FE56827463DE200E164D7 /* dataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D96FE56927463DE200E164D7 /* YHCommonDP.h */,
+				D96FE56A27463DE200E164D7 /* YHCommonDP.m */,
+			);
+			path = dataProvider;
+			sourceTree = "<group>";
+		};
+		D96FE56B27463DE200E164D7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D96FE56F27463DE200E164D7 /* YHBaseModel.h */,
+				D96FE56C27463DE200E164D7 /* YHBaseModel.m */,
+				D96FE57027463DE200E164D7 /* YHBaseReqModel.h */,
+				D96FE56E27463DE200E164D7 /* YHBaseReqModel.m */,
+				D96FE56D27463DE200E164D7 /* YHBaseRespModel.h */,
+				D96FE57127463DE200E164D7 /* YHBaseRespModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		F946A221F94A9E0C7BDF33D5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +216,7 @@
 				D7397F1F20203B780036346C /* Sources */,
 				D7397F2020203B780036346C /* Frameworks */,
 				D7397F2120203B780036346C /* Resources */,
+				6307AA397CED4B24C6BD05A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +305,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6307AA397CED4B24C6BD05A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YHNetSDKDemo/Pods-YHNetSDKDemo-frameworks.sh",
+				"${PODS_ROOT}/YHModel/Frameworks/YHModel.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YHModel.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YHNetSDKDemo/Pods-YHNetSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AD52E3614AF0AE6F272529F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,10 +348,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D96FE57627463DE200E164D7 /* YHBaseReqModel.m in Sources */,
 				D7397F2B20203B780036346C /* ViewController.m in Sources */,
+				D96FE57427463DE200E164D7 /* YHCommonDP.m in Sources */,
 				D7397F3620203B780036346C /* main.m in Sources */,
-				D71B4BC321A2B8B9009D5A70 /* YHTestDP.m in Sources */,
+				D96FE57327463DE200E164D7 /* YHihpDP.m in Sources */,
+				D96FE57227463DE200E164D7 /* YHTestDP.m in Sources */,
 				D7397F2820203B780036346C /* AppDelegate.m in Sources */,
+				D96FE57527463DE200E164D7 /* YHBaseModel.m in Sources */,
+				D96FE57727463DE200E164D7 /* YHBaseRespModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

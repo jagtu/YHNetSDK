@@ -3,13 +3,13 @@
   "version": "0.1.1.0",
   "summary": "YHNetSDK is only a net sdk",
   "description": "YHNetSDK is only a base net sdk, we need pod thirdparty: AFNetworking",
-  "homepage": "https://github.com/XmYlzYhkj/YHNetSDK",
+  "homepage": "https://github.com/XmYlzYhkj/YHNetSDK.git",
   "license": "MIT",
   "authors": {
     "jagtu": "42318168@qq.com"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "pod_target_xcconfig": {
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"

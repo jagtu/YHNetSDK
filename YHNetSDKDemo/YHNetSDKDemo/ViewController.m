@@ -9,10 +9,13 @@
 #import "ViewController.h"
 #import <YHNetSDK/YHNetSDK.h>
 #import "YHTestDP.h"
+#import "YHihpDP.h"
 #import <AFNetworking/AFNetworking.h>
+#import <YHModel/YHModel.h>
+
 @interface ViewController ()<YHNetProtocol>
 @property(nonatomic,strong)UILabel *respLabel;
-
+@property(nonatomic,strong)YHihpDP *ihpdp;
 @property(nonatomic,strong)YHTestDP *dp;
 
 @end
@@ -58,12 +61,23 @@
     [testButton addTarget:self action:@selector(testAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testButton];
     
+    UIButton *testButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    testButton2.frame = CGRectMake(10, 570, [UIScreen mainScreen].bounds.size.width-20, 30);
+    [testButton2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    testButton2.layer.borderColor = [UIColor grayColor].CGColor;
+    testButton2.layer.borderWidth=1.0;
+    testButton2.layer.masksToBounds = YES;
+    testButton2.layer.cornerRadius =5.5;
+    [testButton2 setTitle:@"测试IHP" forState:UIControlStateNormal];
+    [testButton2 addTarget:self action:@selector(testIhpRequest) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton2];
+    
     
     self.respLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, [UIScreen mainScreen].bounds.size.width-20, 500)];
     self.respLabel.numberOfLines = 0;
     self.respLabel.text = @"响应:";
     self.respLabel.textAlignment= NSTextAlignmentLeft;
-//    [self.view addSubview:self.respLabel];
+    [self.view addSubview:self.respLabel];
 }
 
 -(void)testAction:(id)sender
@@ -109,7 +123,23 @@
     return _dp;
 }
 
+-(YHihpDP *)ihpdp
+{
+    if (!_ihpdp) {
+        _ihpdp = [[YHihpDP alloc] init];
+        _ihpdp.netHandle = self;
+    }
+    return _ihpdp;
+}
+
 #pragma mark - acton
+
+-(void)testIhpRequest
+{
+    NSLog(@"start IhpRequest");
+    self.respLabel.text = @"请求中..";
+    [self.ihpdp start];
+}
 
 -(void)start
 {
@@ -143,6 +173,17 @@
     }else{
         
     };
+}
+
+
+-(void)netByDP:(id)dataProvider doWhenSuccess:(NSDictionary *)obj
+{
+    self.respLabel.text = [obj yh_modelToJSONString];
+}
+
+-(void)netByDP:(id)dataProvider doWhenFailed:(id)obj
+{
+    
 }
 
 

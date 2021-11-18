@@ -1,0 +1,6 @@
+framework module YHModel {
+  umbrella header "YHModel.h"
+
+  export *
+  module * { export * }
+}
