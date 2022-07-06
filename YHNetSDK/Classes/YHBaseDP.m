@@ -47,6 +47,7 @@
     self = [super init];
     if (self) {
         self.firstLoad = YES;
+        self.timeout = YHNetTimeoutInterval;
         self.requestSerializerType = YHRequestSerializerJson;
         self.responeSerializerType = YHResponeSerializerJson;
     }
@@ -296,6 +297,9 @@
                                    withParameters:[self getParam]
                         withRequestSerializerType:self.requestSerializerType
                         withResponeSerializerType:self.responeSerializerType
+                                          withCer:NO
+                                  withCerFilePath:nil
+                              withTimeoutInterval:[self timeout]
                                      withProgress:^(NSProgress *downloadProgress) {
         YHNetStrongifySelf;
         self.downloadProgress = downloadProgress;

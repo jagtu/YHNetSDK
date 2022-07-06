@@ -11,7 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 NSString * const YHNetUserAgent = @"YHNetUserAgent";
-NSTimeInterval YHNetTimeoutInterval = 30.0;
+NSTimeInterval YHNetTimeoutInterval = 60.0;
 
 static AFHTTPSessionManager *sharedInstance = nil;
 
@@ -72,13 +72,14 @@ withResponeSerializerType:(YHResponeSerializerType)responeType
                 withParameters:(NSDictionary *)parameters
      withRequestSerializerType:(YHRequestSerializerType)requestType
      withResponeSerializerType:(YHResponeSerializerType)responeType
+                       withCer:(BOOL)withCer
+               withCerFilePath:(NSString *)cerFilePath
+           withTimeoutInterval:(NSTimeInterval)timeoutInterval
                   withProgress:(YHDownloadProgress)progress
                  withSuccessed:(YHSuccessed)successed
                     withFailed:(YHFailed)failed
-                       withCer:(BOOL)withCer
-               withCerFilePath:(NSString *)cerFilePath;
 {
-    AFHTTPSessionManager *manager = [self getNetManagerWithCer:withCer withCerFilePath:cerFilePath withUrlString:url withRequestSerializerType:requestType withResponeSerializerType:responeType];
+    AFHTTPSessionManager *manager = [self getNetManagerWithCer:withCer withCerFilePath:cerFilePath withUrlString:url withTimeoutInterval:timeoutInterval withRequestSerializerType:requestType withResponeSerializerType:responeType];
     
     [self postWithManager:manager
                   withUrl:url
@@ -113,9 +114,9 @@ withResponeSerializerType:(YHResponeSerializerType)responeType
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+//    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = YHNetTimeoutInterval;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+//    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
     [self postWithManager:manager
                   withUrl:url
@@ -250,6 +251,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     return [self getNetManagerWithCer:NO
                       withCerFilePath:nil
                         withUrlString:nil
+                  withTimeoutInterval:YHNetTimeoutInterval
             withRequestSerializerType:requestType
             withResponeSerializerType:responeType];
 }
@@ -257,8 +259,10 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 +(AFHTTPSessionManager *)getNetManagerWithCer:(BOOL)withCer
                               withCerFilePath:(NSString *)cerFilePath
                                 withUrlString:(NSString *)urlStr
+                          withTimeoutInterval:(NSTimeInterval)timeoutInterval
                     withRequestSerializerType:(YHRequestSerializerType)requestType
-                    withResponeSerializerType:(YHResponeSerializerType)responeType{
+                    withResponeSerializerType:(YHResponeSerializerType)responeType
+{
     
     AFHTTPSessionManager *manager;
     if (withCer) {
@@ -278,7 +282,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/javascript", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/plain",@"multipart/form-data",@"application/x-www-form-urlencoded", nil];
     
-    manager.requestSerializer.timeoutInterval = YHNetTimeoutInterval;//默认超时
+    manager.requestSerializer.timeoutInterval = timeoutInterval > 1 ? timeoutInterval : YHNetTimeoutInterval;//默认超时:YHNetTimeoutInterval
     //判断是否要求证书
     if (withCer && ![self isNilOrEmpty:cerFilePath]) {
         

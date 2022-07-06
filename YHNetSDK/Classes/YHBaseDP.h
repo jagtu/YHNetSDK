@@ -123,7 +123,7 @@ typedef void(^YHLoadingViewBlock)(YHBaseDP * _Nullable dp);
 /**
 网络请求超时时间：默认为30秒
 */
-@property(nonatomic,assign)NSTimeInterval * _Nullable timeout;
+@property(nonatomic,assign)NSTimeInterval timeout;
 
 /**
  网络请求类型，默认为post

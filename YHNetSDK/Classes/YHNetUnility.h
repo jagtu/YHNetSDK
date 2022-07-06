@@ -63,6 +63,7 @@ typedef void(^YHDownloadProgress)(NSProgress *downloadProgress);
  @param failed failed
  @param withCer boo
  @param cerFilePath 证书路径
+ @param timeoutInterval 超时时间
  @return array
  */
 +(NSArray *)postRequestWithUrl:(NSString *)url
@@ -70,11 +71,12 @@ typedef void(^YHDownloadProgress)(NSProgress *downloadProgress);
                 withParameters:(NSDictionary *)parameters
      withRequestSerializerType:(YHRequestSerializerType)requestType
      withResponeSerializerType:(YHResponeSerializerType)responeType
+                       withCer:(BOOL)withCer
+               withCerFilePath:(NSString *)cerFilePath
+           withTimeoutInterval:(NSTimeInterval)timeoutInterval
                   withProgress:(YHDownloadProgress)progress
                  withSuccessed:(YHSuccessed)successed
-                    withFailed:(YHFailed)failed
-                       withCer:(BOOL)withCer
-               withCerFilePath:(NSString *)cerFilePath;
+                    withFailed:(YHFailed)failed;
 
 /**
  postRequest(AFHTTPRequestSerializer)
