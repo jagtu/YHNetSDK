@@ -14,11 +14,11 @@
 
 -(void)initData
 {
-    self.host = @"http://decs.pcl.ac.cn:4913/ihp-gateway";
+    self.host = @"http://uec.joslyy.com:8086/uec-portal-app";
     self.path = @"";
 
-    self.reqModel.appId = @"T2019101003592700001";
-    self.reqModel.appSecret = @"OCAR6L396771RX0B";
+    self.reqModel.appId = @"1E4Q3HQS90006758A8C000001AC91335";
+    self.reqModel.appSecret = @" ";
     self.reqModel.encryptType = @"plain";
     self.reqModel.signType = @"plain";
     self.reqModel.isEncrypt = @"0";
@@ -38,7 +38,7 @@
 //    [self setObject:@"LOGIN" forKey:@"codeType"];
     
     //登录
-    self.path = @"/api/account/login";
+    self.path = @"/app/unifyapi";
     [self setObject:@"17720867342" forKey:@"phone"];
     [self setObject:@"70d88ee15131a474650dcb13fd717e547b9db5e6" forKey:@"deviceId"];
     [self setObject:@"02" forKey:@"deviceType"];
