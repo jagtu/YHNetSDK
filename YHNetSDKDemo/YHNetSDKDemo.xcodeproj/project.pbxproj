@@ -25,6 +25,8 @@
 		D96FE57527463DE200E164D7 /* YHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56C27463DE200E164D7 /* YHBaseModel.m */; };
 		D96FE57627463DE200E164D7 /* YHBaseReqModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE56E27463DE200E164D7 /* YHBaseReqModel.m */; };
 		D96FE57727463DE200E164D7 /* YHBaseRespModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96FE57127463DE200E164D7 /* YHBaseRespModel.m */; };
+		D9D290A12913880700223D73 /* YHOCUploadDP.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D290A02913880700223D73 /* YHOCUploadDP.m */; };
+		D9D290A42913881200223D73 /* YHOCUploadRespModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D290A22913881200223D73 /* YHOCUploadRespModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		D96FE56F27463DE200E164D7 /* YHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHBaseModel.h; sourceTree = "<group>"; };
 		D96FE57027463DE200E164D7 /* YHBaseReqModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHBaseReqModel.h; sourceTree = "<group>"; };
 		D96FE57127463DE200E164D7 /* YHBaseRespModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHBaseRespModel.m; sourceTree = "<group>"; };
+		D9D2909F2913880700223D73 /* YHOCUploadDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHOCUploadDP.h; sourceTree = "<group>"; };
+		D9D290A02913880700223D73 /* YHOCUploadDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHOCUploadDP.m; sourceTree = "<group>"; };
+		D9D290A22913881200223D73 /* YHOCUploadRespModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHOCUploadRespModel.m; sourceTree = "<group>"; };
+		D9D290A32913881200223D73 /* YHOCUploadRespModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHOCUploadRespModel.h; sourceTree = "<group>"; };
 		F7AAD1CD40CC4A9F6A1D9BE8 /* Pods-YHNetSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHNetSDKDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHNetSDKDemo/Pods-YHNetSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +172,8 @@
 		D96FE56327463DE200E164D7 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				D9D2909F2913880700223D73 /* YHOCUploadDP.h */,
+				D9D290A02913880700223D73 /* YHOCUploadDP.m */,
 				D96FE56727463DE200E164D7 /* YHihpDP.h */,
 				D96FE56527463DE200E164D7 /* YHihpDP.m */,
 				D96FE56627463DE200E164D7 /* YHTestDP.h */,
@@ -186,6 +194,8 @@
 		D96FE56B27463DE200E164D7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D9D290A32913881200223D73 /* YHOCUploadRespModel.h */,
+				D9D290A22913881200223D73 /* YHOCUploadRespModel.m */,
 				D96FE56F27463DE200E164D7 /* YHBaseModel.h */,
 				D96FE56C27463DE200E164D7 /* YHBaseModel.m */,
 				D96FE57027463DE200E164D7 /* YHBaseReqModel.h */,
@@ -349,8 +359,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D96FE57627463DE200E164D7 /* YHBaseReqModel.m in Sources */,
+				D9D290A12913880700223D73 /* YHOCUploadDP.m in Sources */,
 				D7397F2B20203B780036346C /* ViewController.m in Sources */,
 				D96FE57427463DE200E164D7 /* YHCommonDP.m in Sources */,
+				D9D290A42913881200223D73 /* YHOCUploadRespModel.m in Sources */,
 				D7397F3620203B780036346C /* main.m in Sources */,
 				D96FE57327463DE200E164D7 /* YHihpDP.m in Sources */,
 				D96FE57227463DE200E164D7 /* YHTestDP.m in Sources */,

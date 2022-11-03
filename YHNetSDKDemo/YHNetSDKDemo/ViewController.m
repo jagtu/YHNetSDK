@@ -9,14 +9,17 @@
 #import "ViewController.h"
 #import <YHNetSDK/YHNetSDK.h>
 #import "YHTestDP.h"
+#import "YHOCUploadDP.h"
 #import "YHihpDP.h"
 #import <AFNetworking/AFNetworking.h>
 #import <YHModel/YHModel.h>
 
 @interface ViewController ()<YHNetProtocol>
 @property(nonatomic,strong)UILabel *respLabel;
+@property(nonatomic,strong)UIImageView *imageView;
 @property(nonatomic,strong)YHihpDP *ihpdp;
 @property(nonatomic,strong)YHTestDP *dp;
+@property(nonatomic,strong)YHOCUploadDP *uploadDP;
 
 @end
 
@@ -34,6 +37,17 @@
 //    } withFailed:^(NSError *error) {
 //        NSLog(@"234");
 //    }];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 50, 30, 30)];
+    self.imageView.image = [UIImage imageNamed:@"test_img"];
+    [self.view addSubview:self.imageView];
+    
+    UIButton *uploadbtn = [[UIButton alloc] initWithFrame:CGRectMake(140, 50, 100, 30)];
+    [uploadbtn setTitle:@"点击上传" forState:UIControlStateNormal];
+    [uploadbtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [uploadbtn addTarget:self action:@selector(uploadImgTestAction) forControlEvents:UIControlEventTouchUpInside];
+    uploadbtn.layer.borderColor = [UIColor grayColor].CGColor;
+    uploadbtn.layer.borderWidth=1.0;
+    [self.view addSubview:uploadbtn];
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     [btn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
@@ -107,6 +121,15 @@
     [self.dp start];
 }
 
+-(void)uploadImgTestAction
+{
+    UIImage * consultImgs = self.imageView.image;
+
+    [self.uploadDP clearFiles];
+    [self.uploadDP appendImage:consultImgs withName:@"files"];
+    [self.uploadDP start];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -131,6 +154,18 @@
     }
     return _ihpdp;
 }
+
+-(YHOCUploadDP *)uploadDP
+{
+    if (!_uploadDP) {
+        _uploadDP = [[YHOCUploadDP alloc] init];
+        _uploadDP.netHandle = self;
+        _uploadDP.tag = 1002;
+        _uploadDP.isIMUpload = YES;
+    }
+    return _uploadDP;
+}
+
 
 #pragma mark - acton
 
@@ -178,13 +213,18 @@
 
 -(void)netByDP:(id)dataProvider doWhenSuccess:(NSDictionary *)obj
 {
+    NSLog(@"doWhenSuccess:%@",[obj yh_modelToJSONString]);
     self.respLabel.text = [obj yh_modelToJSONString];
 }
 
 -(void)netByDP:(id)dataProvider doWhenFailed:(id)obj
 {
-    
+    NSLog(@"doWhenFailed:%@",[obj yh_modelToJSONString]);
 }
 
+-(void)netByDP:(id)dataProvider uploadProgress:(float) uploadProgress
+{
+    NSLog(@"uploadProgress:%f",uploadProgress);
+}
 
 @end
