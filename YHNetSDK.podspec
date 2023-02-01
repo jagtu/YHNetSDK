@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     'EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64__XCODE_1200' => 'arm64 arm64e armv7 armv7s armv6 armv8'
   }
 
-  s.source       = { :git => "git@gitlab.ylzpay.com:ios/ios_component/YHNetSDK.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://gitlab.ylzpay.com/ios/ios_component/YHNetSDK.git", :tag => s.version.to_s }
 
   s.source_files  = "YHNetSDK/Classes/*"
 
