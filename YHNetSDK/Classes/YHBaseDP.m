@@ -291,7 +291,7 @@
 }
 
 -(void)requestForPost{
-    YHNetWeakifySelf;
+//    YHNetWeakifySelf;
     self.tasks = [YHNetUnility postRequestWithUrl:[self getFullUrl]
                                withRequestHeaders:[self getHeaders]
                                    withParameters:[self getParam]
@@ -301,31 +301,27 @@
                                   withCerFilePath:nil
                               withTimeoutInterval:[self timeout]
                                      withProgress:^(NSProgress *downloadProgress) {
-        YHNetStrongifySelf;
+//        YHNetStrongifySelf;
         self.downloadProgress = downloadProgress;
     } withSuccessed:^(id obj) {
-        YHNetStrongifySelf;
+//        YHNetStrongifySelf;
         [self continueActionAfterRequestSuccessWithObj:obj];
     } withFailed:^(NSError *error) {
-        YHNetStrongifySelf;
+//        YHNetStrongifySelf;
         [self continueActionAfterRequestFailedWithError:error];
     }];
 }
 
 -(void)requestForGet{
-    YHNetWeakifySelf;
     NSURLSessionDataTask *task = [YHNetUnility getRequestWithUrl:[self getFullUrl]
                                               withRequestHeaders:[self getParam]
                                        withRequestSerializerType:self.requestSerializerType
                                        withResponeSerializerType:self.responeSerializerType
                                                     withProgress:^(NSProgress *downloadProgress) {
-        YHNetStrongifySelf;
         self.downloadProgress = downloadProgress;
     } withSuccessed:^(id obj) {
-        YHNetStrongifySelf;
         [self continueActionAfterRequestSuccessWithObj:obj];
     } withFailed:^(NSError *error) {
-        YHNetStrongifySelf;
         [self continueActionAfterRequestFailedWithError:error];
     }];
     

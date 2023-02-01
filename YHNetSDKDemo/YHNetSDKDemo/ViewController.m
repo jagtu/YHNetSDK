@@ -173,7 +173,8 @@
 {
     NSLog(@"start IhpRequest");
     self.respLabel.text = @"请求中..";
-    [self.ihpdp start];
+//    [self.ihpdp start];
+    [[[YHihpDP alloc] initWithHandle:self] start];
 }
 
 -(void)start
