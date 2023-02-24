@@ -3,7 +3,7 @@
 
 ## Installation
 
-易惠 ios 通用网络框架, YHNetSDK is available through [CocoaPods](https://cocoapods.org). 
+ios 通用网络框架, YHNetSDK is available through [CocoaPods](https://cocoapods.org). 
 
 ### 引入
 To install it, simply add the following line to your Podfile:
@@ -12,15 +12,11 @@ To install it, simply add the following line to your Podfile:
 pod 'YHNetSDK'
 ```
 
-### 打包
+### 打包发布方式
 
 ```ruby
 pod package YHNetSDK.podspec --force --no-mangle --exclude-deps
 ```
-
-## Author
-ljt, 42318168@qq.com
-zhengxiaolang，2037720738@qq.com
 
 ## License
 
